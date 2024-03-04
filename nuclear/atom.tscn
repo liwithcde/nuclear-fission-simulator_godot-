@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://wcwk2teeyd04"]
+
+[ext_resource type="Script" path="res://atom.gd" id="1_jhqce"]
+[ext_resource type="PackedScene" uid="uid://ckef32r8g28dn" path="res://neutron.tscn" id="2_p0nf7"]
+[ext_resource type="Texture2D" uid="uid://biljvojeecfpe" path="res://红圆.png" id="3_apsna"]
+[ext_resource type="Texture2D" uid="uid://brl4363hepk74" path="res://圆.png" id="3_iw2or"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8faa0"]
+friction = 0.0
+bounce = 0.39
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dis8"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ut6bv"]
+radius = 1.0
+
+[node name="atom" type="RigidBody2D"]
+position = Vector2(543, 317)
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_8faa0")
+gravity_scale = 0.0
+script = ExtResource("1_jhqce")
+neutron = ExtResource("2_p0nf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1dis8")
+
+[node name="nucleus" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="nucleus"]
+shape = SubResource("CircleShape2D_ut6bv")
+
+[node name="Sprite2D" type="Sprite2D" parent="nucleus"]
+scale = Vector2(0.00603047, 0.00603047)
+texture = ExtResource("3_apsna")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.419608)
+position = Vector2(-1, 0.5)
+scale = Vector2(0.152, 0.152)
+texture = ExtResource("3_iw2or")
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="nucleus" to="." method="_on_nucleus_area_entered"]
+[connection signal="body_entered" from="nucleus" to="." method="_on_nucleus_body_entered"]

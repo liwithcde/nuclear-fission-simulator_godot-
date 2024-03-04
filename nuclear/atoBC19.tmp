@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://wcwk2teeyd04"]
+
+[ext_resource type="Script" path="res://atom.gd" id="1_jhqce"]
+[ext_resource type="PackedScene" uid="uid://ckef32r8g28dn" path="res://neutron.tscn" id="2_p0nf7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dis8"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ut6bv"]
+radius = 2.0
+
+[node name="atom" type="RigidBody2D"]
+position = Vector2(587, 291)
+input_pickable = true
+script = ExtResource("1_jhqce")
+neutron = ExtResource("2_p0nf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1dis8")
+
+[node name="nucleus" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="nucleus"]
+shape = SubResource("CircleShape2D_ut6bv")
+
+[connection signal="area_entered" from="nucleus" to="." method="_on_nucleus_area_entered"]
+[connection signal="body_entered" from="nucleus" to="." method="_on_nucleus_body_entered"]

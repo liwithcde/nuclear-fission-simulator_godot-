@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b455levu3ttnc"]
+
+[ext_resource type="Script" path="res://container.gd" id="1_5ai03"]
+[ext_resource type="PackedScene" uid="uid://e1ln1kjn0px4" path="res://border.tscn" id="1_5fndb"]
+[ext_resource type="PackedScene" uid="uid://wcwk2teeyd04" path="res://atom.tscn" id="2_i8drb"]
+
+[node name="Container" type="Node2D"]
+position = Vector2(142, 139)
+script = ExtResource("1_5ai03")
+atom_scene = ExtResource("2_i8drb")
+
+[node name="border" parent="." instance=ExtResource("1_5fndb")]
+position = Vector2(1345, 1220)
+scale = Vector2(15.2326, -0.516886)
+metadata/_edit_lock_ = true
+
+[node name="border2" parent="." instance=ExtResource("1_5fndb")]
+position = Vector2(1345, -23.0001)
+scale = Vector2(15.2455, 0.286707)
+metadata/_edit_lock_ = true
+
+[node name="border3" parent="." instance=ExtResource("1_5fndb")]
+position = Vector2(-15.0001, 595)
+rotation = 1.5708
+scale = Vector2(6.78493, 0.286707)
+metadata/_edit_lock_ = true
+
+[node name="border4" parent="." instance=ExtResource("1_5fndb")]
+position = Vector2(2696, 601)
+rotation = 1.5708
+scale = Vector2(6.82494, 0.286707)
+metadata/_edit_lock_ = true
